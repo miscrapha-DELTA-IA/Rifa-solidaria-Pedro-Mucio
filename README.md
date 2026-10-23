@@ -8,7 +8,7 @@ Site estático para a rifa de **200 números, R$ 20 por número**, com obra de *
 2. Abra **SQL Editor** e execute o conteúdo de [`supabase/schema.sql`](supabase/schema.sql). O comando cria a cartela de 001 a 200, permissões RLS e sincronização Realtime.
 3. A URL e a chave **publicável** do Supabase já estão configuradas em [`config.js`](config.js). **Nunca** exponha `service_role`, chaves secretas ou senha de banco no GitHub.
 4. O WhatsApp do organizador já está configurado em `config.js` no formato DDI 55 + DDD + número.
-5. Em **Authentication > Users**, crie um usuário com e-mail e senha para o organizador. Copie seu **User UID**.
+5. Em **Authentication > Users**, convide ou crie a conta do organizador, com verificação do e-mail. Copie seu **User UID**. A conta autorizada ainda não foi criada neste projeto.
 6. No **SQL Editor**, execute `insert into public.rifa_admins (user_id) values ('COLE_AQUI_O_UUID_DO_USUARIO') on conflict (user_id) do nothing;`. Esse usuário terá permissão para marcar/desmarcar vendas.
 7. Se for usar confirmação por e-mail ou redefinição de senha, ajuste **Authentication > URL Configuration** com o endereço verdadeiro do Netlify.
 
@@ -36,8 +36,8 @@ A seleção de números no navegador e o encaminhamento para WhatsApp **não res
 ### Checklist antes de divulgar
 
 - [x] URL e chave pública Supabase preenchidas em `config.js`.
-- [ ] SQL executado sem erros.
-- [ ] Conta organizadora criada e UUID cadastrado em `rifa_admins`.
+- [x] SQL executado sem erros: cartela de 200 números criada no Supabase, com RLS e publicação Realtime.
+- [ ] Conta organizadora criada e UUID cadastrado em `rifa_admins` (pendente de convite/ativação por e-mail).
 - [x] WhatsApp real preenchido (teste em dispositivo pendente).
 - [ ] `obra.jpg` presente no repositório e aparecendo no site.
 - [ ] Site existente no Netlify vinculado ao GitHub.
